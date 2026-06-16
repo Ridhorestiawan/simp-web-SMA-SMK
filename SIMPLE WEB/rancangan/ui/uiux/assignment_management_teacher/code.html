@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manajemen Tugas - LMS SMA/SMK</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#c3c7cc",
+                    "secondary-fixed": "#e3e2e6",
+                    "inverse-surface": "#2e3134",
+                    "inverse-on-surface": "#eff1f5",
+                    "primary": "#005bbf",
+                    "surface-container-highest": "#e1e2e6",
+                    "primary-container": "#1a73e8",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#e3e2e6",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#181c20",
+                    "on-primary-fixed-variant": "#004493",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8f9fd",
+                    "on-tertiary-fixed-variant": "#43474c",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#ffffff",
+                    "surface": "#f8f9fd",
+                    "surface-dim": "#d9dade",
+                    "background": "#f8f9fd",
+                    "inverse-primary": "#adc7ff",
+                    "on-secondary-fixed": "#1a1b1e",
+                    "primary-fixed": "#d8e2ff",
+                    "on-primary-fixed": "#001a41",
+                    "on-secondary-fixed-variant": "#46474a",
+                    "on-primary-container": "#ffffff",
+                    "surface-container-high": "#e7e8ec",
+                    "surface-container-low": "#f2f3f7",
+                    "on-surface-variant": "#414754",
+                    "outline-variant": "#c1c6d6",
+                    "secondary-fixed-dim": "#c7c6ca",
+                    "outline": "#727785",
+                    "tertiary-fixed": "#dfe3e8",
+                    "on-background": "#191c1f",
+                    "tertiary": "#5a5e63"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "container-max-width": "1440px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .soft-shadow {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .soft-shadow-hover:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+        .sidebar-active-indicator {
+            border-left: 4px solid #005bbf;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 hover:bg-surface-container-high rounded-full transition-transform active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">LMS SMA/SMK</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User profile picture" class="w-full h-full object-cover" data-alt="A professional headshot of a smiling male teacher in a clean blue shirt against a minimalist gray office background, studio lighting, high resolution, corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_S_rhOqWOFRjz-E1WmmUldzEs4_jPx5lQGrnGI-28sSqqpQcKIyraHFxJw_pPGZBmW42_l5CNmzCnAuZ25GwnLDQw0Aiy0wZWxjSRiiY2xCjIoOovB_ifLiNQBZaS8xluqKeJatrIafiwAh0-PpgXf5OzgJDQeN69os0NUm8GvpdU1hI5zfI_Fi1OMSyLK3VW5-_zGn0k5AyPvMrLRL4myKc1wuDXjUUine9aPl7T7X_1PUxPM84V-Q610To-bBhzBItkrBFndA"/>
+</div>
+</div>
+</header>
+<div class="flex pt-16 min-h-screen">
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex fixed inset-y-0 left-0 z-40 flex flex-col w-64 bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline mt-16 h-[calc(100vh-64px)] shadow-sm">
+<div class="p-6 flex flex-col items-start gap-2 border-b border-outline-variant">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container mb-2">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+</div>
+<h2 class="font-title-sm text-title-sm text-on-surface">Rizky Ramadhan</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Administrator • SMA Negeri 1</p>
+</div>
+<nav class="flex-1 py-4">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-body-md text-body-md">Kelola Kelas</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="book">book</span>
+<span class="font-body-md text-body-md">Materi</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-primary-container text-on-primary-container border-l-4 border-primary transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-body-md text-body-md">Tugas</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-body-md text-body-md">Presensi</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-body-md text-body-md">Laporan</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop bg-background pb-24 md:pb-8">
+<!-- Header Section -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Manajemen Tugas</h2>
+<p class="text-on-surface-variant max-w-2xl">Pantau perkembangan tugas, kumpulkan tugas baru, dan berikan penilaian kepada siswa secara terorganisir.</p>
+</div>
+<button class="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-xl font-title-sm text-title-sm soft-shadow hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    Buat Tugas Baru
+                </button>
+</div>
+<!-- Dashboard Overview Stats (Bento-style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8">
+<div class="bg-surface-container-lowest p-6 rounded-xl soft-shadow border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="task">task</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Total Tugas</p>
+<p class="text-2xl font-bold">24</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl soft-shadow border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Belum Dinilai</p>
+<p class="text-2xl font-bold">12</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl soft-shadow border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Siswa Aktif</p>
+<p class="text-2xl font-bold">156</p>
+</div>
+</div>
+<div class="bg-primary p-6 rounded-xl soft-shadow flex items-center gap-4 text-on-primary">
+<div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm opacity-90">Rata-rata Nilai</p>
+<p class="text-2xl font-bold">88.4</p>
+</div>
+</div>
+</div>
+<!-- Content Split: Task List & Detail View -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Task List (Left/Main) -->
+<div class="lg:col-span-8 space-y-gutter">
+<div class="flex items-center justify-between mb-2 px-2">
+<h3 class="font-title-sm text-title-sm text-on-surface">Daftar Tugas Terbaru</h3>
+<div class="flex gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</div>
+<!-- Task Cards -->
+<div class="grid grid-cols-1 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl soft-shadow soft-shadow-hover border border-outline-variant transition-all group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<h4 class="font-title-sm text-title-sm text-on-surface">Analisis Algoritma Sorting</h4>
+<p class="text-body-md text-on-surface-variant">XI RPL 1 • Pemrograman Dasar</p>
+<div class="flex items-center gap-3 mt-2">
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="event">event</span>
+                                                Deadline: 24 Okt 2023
+                                            </div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                                                32/36 Dikumpulkan
+                                            </div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<div class="w-32 h-2 bg-surface-container-high rounded-full overflow-hidden mt-1">
+<div class="h-full bg-primary w-[88%]"></div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 text-right">88% Progress</p>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl soft-shadow soft-shadow-hover border border-outline-variant transition-all group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+</div>
+<div>
+<h4 class="font-title-sm text-title-sm text-on-surface">Implementasi Database MySQL</h4>
+<p class="text-body-md text-on-surface-variant">XI RPL 2 • Basis Data</p>
+<div class="flex items-center gap-3 mt-2">
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="event">event</span>
+                                                Deadline: 28 Okt 2023
+                                            </div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-error">
+<span class="material-symbols-outlined text-[16px]" data-icon="warning">warning</span>
+                                                12/36 Dikumpulkan
+                                            </div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<div class="w-32 h-2 bg-surface-container-high rounded-full overflow-hidden mt-1">
+<div class="h-full bg-error w-[33%]"></div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 text-right">33% Progress</p>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl soft-shadow soft-shadow-hover border border-outline-variant transition-all group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="brush">brush</span>
+</div>
+<div>
+<h4 class="font-title-sm text-title-sm text-on-surface">Desain UI Dashboard Sekolah</h4>
+<p class="text-body-md text-on-surface-variant">XI MM 1 • Desain Grafis</p>
+<div class="flex items-center gap-3 mt-2">
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="event">event</span>
+                                                Deadline: 30 Okt 2023
+                                            </div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+                                                0/40 Dikumpulkan
+                                            </div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<div class="w-32 h-2 bg-surface-container-high rounded-full overflow-hidden mt-1">
+<div class="h-full bg-tertiary w-[0%]"></div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 text-right">0% Progress</p>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Grading / Student List (Right/Sidebar detail) -->
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-title-sm text-title-sm text-on-surface">Siap Dinilai</h3>
+<span class="px-2 py-0.5 bg-error text-on-error rounded-full text-[10px] font-bold">12 BARU</span>
+</div>
+<div class="space-y-4">
+<!-- Student Item -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Student avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a high school student, bright expression, natural daylight, soft bokeh classroom background, high quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8DPLmr0JNWL01RX22EppY5l0HnfV4SYcsEe4secZFLRw2NYbWav273CEHfGOHL4hNaW6HP_U8RCJsVdd0b-TpVoU9QWz7ChaCdCFakLWw2qMUvl6_ufmbjMsSu-I-juNgetZQn0hOoAvvxc0bO3oGjRMOw0u0-jw2D1oTDEiCBV-k4Tl9gdRHcH8cWxn90ZnRwC7lUy29Pz38XUyKXbvSTRYLQNpC51iy9E1DwTgH8b4QnD9liZG9S-RIH0ksDYlVAWyWJRHFqw"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">Aditya Wijaya</p>
+<p class="text-[11px] text-on-surface-variant">2 jam yang lalu</p>
+</div>
+</div>
+<button class="px-3 py-1.5 bg-primary-container/10 text-primary-container font-label-sm text-label-sm rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors">
+                                    Nilai
+                                </button>
+</div>
+<!-- Student Item -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Student avatar" class="w-full h-full object-cover" data-alt="Portrait of a female student wearing a school uniform, neutral background, sharp focus, professional lighting, corporate educational style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaT3IIVtC4CjSqy9tVaIt8M7y4VSrV__sPTql2iS1kdmVXZWTmbxDjOOLgwmx070svYe1pYXdEjQoiNIYI70pyzWNpvgS-oo9NDkMvY0DcYHUmpbjjv9n3GzS-n1BzujraWveqC6NKXmUvFj_XEW8NQ7fFpvt7pLZjHIlfxAYIqtFFL5WZTQrUzwGybnL2DFKGfRZCxzfDHAZaOV_sXOdKANnLZ_YJEXdpjl25p84Bui6g0H13CdE8ptXeRqDBqZo-i0_JL4LlVg"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">Bella Safitri</p>
+<p class="text-[11px] text-on-surface-variant">4 jam yang lalu</p>
+</div>
+</div>
+<button class="px-3 py-1.5 bg-primary-container/10 text-primary-container font-label-sm text-label-sm rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors">
+                                    Nilai
+                                </button>
+</div>
+<!-- Student Item -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Student avatar" class="w-full h-full object-cover" data-alt="Portrait of a young male student in a modern tech lab, focused expression, blue-toned rim lighting, professional academic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy4qDuV6pQyg27OHq2344_tP8ai-ye9GgekK3KVCBTmICL3WfOLbGki6oMoTiDXNd6QaaEEI7MexlWEAEkvPS5B3nfDrU8PzipBw5ejaa--9Kd36_ehvvMDjD_EAMvWO7cwKUfmlHILgHNUEl7a6gWccwN4QX5Sxx9NRmHx9kmXTlhEoJmiCCGe0DvbSFSBWZ-uYrl0jcJclrRS7UoQG2R0OH4l_lfFeXr5RMxwjmbwXDiy_P_SWAJaq7ryB_vvpf5lH2N0mrJDg"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">Candra Malik</p>
+<p class="text-[11px] text-on-surface-variant">5 jam yang lalu</p>
+</div>
+</div>
+<button class="px-3 py-1.5 bg-primary-container/10 text-primary-container font-label-sm text-label-sm rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors">
+                                    Nilai
+                                </button>
+</div>
+</div>
+<button class="w-full mt-6 py-2 text-primary font-label-sm text-label-sm hover:underline">
+                            Lihat Semua Pengiriman
+                        </button>
+</div>
+<!-- Grading Scale Legend -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant border-dashed">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-4">Metode Penilaian</h3>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<p class="text-body-md">Kesesuaian Logika (40%)</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<p class="text-body-md">Kebersihan Kode (30%)</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<p class="text-body-md">Ketepatan Waktu (30%)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline md:hidden shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-secondary-container/50 flex-1 h-full transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-secondary-container/50 flex-1 h-full transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="class">class</span>
+<span class="font-label-sm text-[10px]">Kelas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold hover:bg-secondary-container/50 flex-1 h-full transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="task">task</span>
+<span class="font-label-sm text-[10px]">Tugas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-secondary-container/50 flex-1 h-full transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-[10px]">Profil</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.soft-shadow-hover').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

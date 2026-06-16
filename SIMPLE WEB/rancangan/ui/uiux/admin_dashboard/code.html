@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LMS SMA/SMK - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c3c7cc",
+                        "secondary-fixed": "#e3e2e6",
+                        "inverse-surface": "#2e3134",
+                        "inverse-on-surface": "#eff1f5",
+                        "primary": "#005bbf",
+                        "surface-container-highest": "#e1e2e6",
+                        "primary-container": "#1a73e8",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#e3e2e6",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#181c20",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8f9fd",
+                        "on-tertiary-fixed-variant": "#43474c",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#ffffff",
+                        "surface": "#f8f9fd",
+                        "surface-dim": "#d9dade",
+                        "background": "#f8f9fd",
+                        "inverse-primary": "#adc7ff",
+                        "on-secondary-fixed": "#1a1b1e",
+                        "primary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#001a41",
+                        "on-secondary-fixed-variant": "#46474a",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-high": "#e7e8ec",
+                        "surface-container-low": "#f2f3f7",
+                        "on-secondary-container": "#646468",
+                        "secondary": "#5e5e62",
+                        "surface-tint": "#005bc0",
+                        "surface-container": "#edeef2",
+                        "tertiary-container": "#73777c",
+                        "primary-fixed-dim": "#adc7ff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e1e2e6",
+                        "on-surface": "#191c1f",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#414754",
+                        "outline-variant": "#c1c6d6",
+                        "secondary-fixed-dim": "#c7c6ca",
+                        "outline": "#727785",
+                        "tertiary-fixed": "#dfe3e8",
+                        "on-background": "#191c1f",
+                        "tertiary": "#5a5e63"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "container-max-width": "1440px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "code-snippet": ["jetbrainsMono"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "title-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "code-snippet": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .soft-shadow { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+        .soft-shadow:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 hover:bg-surface-container-high rounded-full transition-transform active:scale-95">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">LMS SMA/SMK</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface">Rizky Ramadhan</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Administrator</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile picture" class="w-full h-full object-cover" data-alt="A clean professional headshot of a young male Indonesian administrator in a minimalist office setting. He is wearing a neat polo shirt, looking friendly and confident. The background is a soft-focus modern office with natural light, keeping a high-key light mode aesthetic consistent with corporate professional software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0V5WCeC1u3a_szV_hD0avtww_sX79IcA4yezr89W8Xg9CXATXZ2j9AjajZmp96HaRHAsJY1VQOxNjKDAqRjzQ7Pqea_gmX5UKJyzDqNYdq7kTUsXV7x4auw2SvfOIRSoUaQwGW6eUETz-uGz-EDaNri9RJUTr0BaittNAnpV4_Y1hiVnO8KPNAwH41S2wDl1Yzkp3FUGoMKscjlz7vTfJUfZV8QOdtZw7PSfmC0sCpWVQJo--_bkOuwp68wSZG8UfifQywKNzSQ"/>
+</div>
+</div>
+</header>
+<!-- Sidebar / NavigationDrawer -->
+<aside class="fixed inset-y-0 left-0 z-40 hidden md:flex flex-col w-64 bg-surface border-r border-outline-variant mt-16 shadow-sm">
+<div class="p-6 flex flex-col gap-1 border-b border-outline-variant bg-surface-container-low">
+<p class="font-title-sm text-title-sm text-on-surface">Rizky Ramadhan</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Administrator</p>
+<p class="text-[11px] font-medium text-primary mt-2">SMA Negeri 1</p>
+</div>
+<nav class="flex-1 py-4 overflow-y-auto no-scrollbar">
+<a class="flex items-center gap-4 px-4 py-3 bg-primary-container text-on-primary-container border-l-4 border-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-body-md text-body-md">Kelola Kelas</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body-md text-body-md">Kelola Akun</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-body-md text-body-md">Laporan</span>
+</a>
+</nav>
+<div class="p-4 border-t border-outline-variant">
+<button class="flex items-center gap-4 px-4 py-3 w-full text-error hover:bg-error-container/10 rounded-xl transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md font-semibold">Keluar</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 pb-20 px-margin-mobile md:px-margin-desktop min-h-screen">
+<!-- Header Welcome -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Welcome Admin Rizky</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1" id="current-date">Senin, 24 Mei 2024</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 bg-surface border border-outline p-2 px-4 rounded-xl hover:bg-surface-container-high transition-all text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">download</span> Unduh Data
+                </button>
+</div>
+</div>
+<!-- Stat Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-8">
+<!-- Total Guru -->
+<div class="bg-surface-container-lowest p-6 rounded-xl soft-shadow border border-outline-variant transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary/10 rounded-xl">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<span class="text-green-600 font-label-sm text-label-sm flex items-center bg-green-50 px-2 py-1 rounded-full">+2 bln ini</span>
+</div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Guru</h3>
+<p class="text-[32px] font-bold text-on-surface mt-1">45</p>
+</div>
+<!-- Total Siswa -->
+<div class="bg-surface-container-lowest p-6 rounded-xl soft-shadow border border-outline-variant transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container text-on-secondary-container rounded-xl">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="text-green-600 font-label-sm text-label-sm flex items-center bg-green-50 px-2 py-1 rounded-full">+12 bln ini</span>
+</div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Siswa</h3>
+<p class="text-[32px] font-bold text-on-surface mt-1">820</p>
+</div>
+<!-- Total Kelas -->
+<div class="bg-surface-container-lowest p-6 rounded-xl soft-shadow border border-outline-variant transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-tertiary-fixed-dim text-tertiary rounded-xl">
+<span class="material-symbols-outlined">school</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm flex items-center bg-surface-container px-2 py-1 rounded-full">Tetap</span>
+</div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Kelas</h3>
+<p class="text-[32px] font-bold text-on-surface mt-1">24</p>
+</div>
+<!-- Total Materi -->
+<div class="bg-surface-container-lowest p-6 rounded-xl soft-shadow border border-outline-variant transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-error-container text-on-error-container rounded-xl">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="text-green-600 font-label-sm text-label-sm flex items-center bg-green-50 px-2 py-1 rounded-full">+45 baru</span>
+</div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Materi</h3>
+<p class="text-[32px] font-bold text-on-surface mt-1">156</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Recent Activity Table (Bento Left) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl soft-shadow border border-outline-variant overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-white">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent User Activity</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline">Lihat Semua</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">USER</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">ROLE</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">ACTION</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant">TIME</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-[10px]">BM</div>
+<span class="font-body-md text-body-md text-on-surface">Budi Martono</span>
+</div>
+</td>
+<td class="p-4"><span class="px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-semibold uppercase">Guru</span></td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant">Upload Materi Fisika XI</td>
+<td class="p-4 font-label-sm text-label-sm text-on-surface-variant italic">2 menit yang lalu</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-error-container text-on-error-container flex items-center justify-center font-bold text-[10px]">AS</div>
+<span class="font-body-md text-body-md text-on-surface">Ani Sulastri</span>
+</div>
+</td>
+<td class="p-4"><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-semibold uppercase">Siswa</span></td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant">Submit Tugas Matematika</td>
+<td class="p-4 font-label-sm text-label-sm text-on-surface-variant italic">15 menit yang lalu</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold text-[10px]">RR</div>
+<span class="font-body-md text-body-md text-on-surface">Rizky Ramadhan</span>
+</div>
+</td>
+<td class="p-4"><span class="px-2 py-1 rounded-full bg-primary-container text-on-primary-container text-[10px] font-semibold uppercase">Admin</span></td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant">Update Jadwal Semester</td>
+<td class="p-4 font-label-sm text-label-sm text-on-surface-variant italic">1 jam yang lalu</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Quick Actions (Bento Right) -->
+<div class="flex flex-col gap-gutter">
+<div class="bg-primary p-6 rounded-xl soft-shadow text-on-primary relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-title-sm text-title-sm mb-2">Quick Actions</h3>
+<p class="font-label-sm text-label-sm opacity-80 mb-6">Manajemen cepat data sekolah</p>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-white/10 hover:bg-white/20 p-3 rounded-xl flex flex-col items-center gap-2 transition-all group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">person_add</span>
+<span class="font-label-sm text-label-sm text-center">Tambah Guru</span>
+</button>
+<button class="bg-white/10 hover:bg-white/20 p-3 rounded-xl flex flex-col items-center gap-2 transition-all group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">group_add</span>
+<span class="font-label-sm text-label-sm text-center">Tambah Siswa</span>
+</button>
+<button class="bg-white/10 hover:bg-white/20 p-3 rounded-xl flex flex-col items-center gap-2 transition-all group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">add_box</span>
+<span class="font-label-sm text-label-sm text-center">Buat Kelas</span>
+</button>
+<button class="bg-white/10 hover:bg-white/20 p-3 rounded-xl flex flex-col items-center gap-2 transition-all group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">analytics</span>
+<span class="font-label-sm text-label-sm text-center">Lihat Laporan</span>
+</button>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Active Status / Timeline -->
+<div class="bg-surface-container-lowest p-6 rounded-xl soft-shadow border border-outline-variant">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-4">Status Penggunaan</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface-variant">Storage Digunakan</span>
+<span class="text-on-surface font-bold">75%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-1000" style="width: 75%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface-variant">Siswa Aktif (Hari ini)</span>
+<span class="text-on-surface font-bold">612/820</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-secondary h-full transition-all duration-1000" style="width: 74%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-weight="fill">home</span>
+<span class="font-label-sm text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">class</span>
+<span class="font-label-sm text-[10px]">Kelas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">task</span>
+<span class="font-label-sm text-[10px]">Tugas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px]">Profil</span>
+</a>
+</nav>
+<script>
+        // Set dynamic date
+        function setDate() {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const today = new Date();
+            document.getElementById('current-date').innerText = today.toLocaleDateString('id-ID', options);
+        }
+        setDate();
+
+        // Micro-interactions for activity rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.add('scale-[0.99]');
+                setTimeout(() => row.classList.remove('scale-[0.99]'), 150);
+            });
+        });
+    </script>
+</body></html>

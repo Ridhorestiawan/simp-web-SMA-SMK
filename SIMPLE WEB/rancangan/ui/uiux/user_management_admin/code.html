@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kelola Akun - LMS SMA/SMK</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#c3c7cc",
+                    "secondary-fixed": "#e3e2e6",
+                    "inverse-surface": "#2e3134",
+                    "inverse-on-surface": "#eff1f5",
+                    "primary": "#005bbf",
+                    "surface-container-highest": "#e1e2e6",
+                    "primary-container": "#1a73e8",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#e3e2e6",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#181c20",
+                    "on-primary-fixed-variant": "#004493",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8f9fd",
+                    "on-tertiary-fixed-variant": "#43474c",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#ffffff",
+                    "surface": "#f8f9fd",
+                    "surface-dim": "#d9dade",
+                    "background": "#f8f9fd",
+                    "inverse-primary": "#adc7ff",
+                    "on-secondary-fixed": "#1a1b1e",
+                    "primary-fixed": "#d8e2ff",
+                    "on-primary-fixed": "#001a41",
+                    "on-secondary-fixed-variant": "#46474a",
+                    "on-primary-container": "#ffffff",
+                    "surface-container-high": "#e7e8ec",
+                    "surface-container-low": "#f2f3f7",
+                    "on-secondary-container": "#646468",
+                    "secondary": "#5e5e62",
+                    "surface-tint": "#005bc0",
+                    "surface-container": "#edeef2",
+                    "tertiary-container": "#73777c",
+                    "primary-fixed-dim": "#adc7ff",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e1e2e6",
+                    "on-surface": "#191c1f",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#414754",
+                    "outline-variant": "#c1c6d6",
+                    "secondary-fixed-dim": "#c7c6ca",
+                    "outline": "#727785",
+                    "tertiary-fixed": "#dfe3e8",
+                    "on-background": "#191c1f",
+                    "tertiary": "#5a5e63"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "container-max-width": "1440px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "code-snippet": ["jetbrainsMono"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "code-snippet": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8f9fd;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #e1e2e6;
+        border-radius: 10px;
+      }
+      .card-shadow {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary md:hidden cursor-pointer">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">LMS SMA/SMK</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 mr-8">
+<span class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary cursor-pointer transition-colors">Notifikasi</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary cursor-pointer transition-colors">Bantuan</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right hidden sm:block">
+<p class="font-label-sm text-label-sm font-bold text-on-surface">Rizky Ramadhan</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Administrator</p>
+</div>
+<img alt="User profile picture" class="w-10 h-10 rounded-full border-2 border-primary-fixed" data-alt="A professional portrait of a male administrator in a clean office setting, soft studio lighting with a neutral background of soft blues and grays, representing trust and authority in an educational corporate environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt6XTZ20-M8u7ptGJD8d4HXp8SsyrqcCcM1a2i___1nhX__LisBJYUWBFywLwn2rAXcpKHroDZ0XeWUI76bC4RlSTmomD4Ewoid4IfPqJslvU5bB3XlaGPfHxrOWFfozFSXxFzLuJeURk6bWHKD26_JmAlZ1Mp6bTKHVQsYAkarwDX0XjekeM15T5w337Lzb19dsaFABs-p65USduY4dwzfnqV4qqpJIZIgOYmmVYPkr26m5tFNEnixEnWkk7cEvv4snIHyPxe0A"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer Shell (Desktop Only) -->
+<aside class="fixed inset-y-0 left-0 z-40 hidden md:flex flex-col w-64 bg-surface border-r border-outline-variant shadow-sm pt-16">
+<div class="p-6 flex flex-col gap-1">
+<div class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 bg-primary-container text-on-primary-container border-l-4 border-primary transition-all duration-200 ease-in-out cursor-pointer rounded-r-lg">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md">Kelola Akun</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">book</span>
+<span class="font-body-md text-body-md">Materi</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body-md text-body-md">Tugas</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-body-md text-body-md">Presensi</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md text-body-md">Laporan</span>
+</div>
+</div>
+<div class="mt-auto p-6 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="School logo" class="w-8 h-8 rounded-lg" data-alt="A minimalist logo of an Indonesian high school, SMA Negeri 1, set against a clean white background with professional blue accents, evoking institutional reliability and academic excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHo9lIT68cFqDxyh8ylPC9rWivOWsNv4YLQHyxtEHrDF2daStpvtiz5mOtCdZM0gQLb0rzY8Ju4KSy1yqF_VmFz1Mc1hVqOtNprRZU0sq1tuN9IUXYYMrwVFPFOgdmdS4B8fLgdnznh9PTYrHIWkGb2pr5eBDEj_xsInB4f1r5rEtVjEutU7QCkp6cOtx5pdGo7JuylO_tDtKcceuLSyHKyyahJyvFf4LLtCmArvpGrBx02JHj69eEoZqdXigocqnDT9qQXWfzyA"/>
+<div>
+<p class="font-label-sm text-label-sm font-bold">SMA Negeri 1</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Pusat Data</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="md:ml-64 pt-24 pb-20 px-margin-mobile md:px-margin-desktop min-h-screen">
+<div class="max-w-[1440px] mx-auto">
+<!-- Page Header & Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Kelola Akun</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manajemen data guru dan siswa dalam sistem akademik.</p>
+</div>
+<button class="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-full font-label-sm text-label-sm font-bold shadow-sm hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">person_add</span>
+                    Tambah Pengguna
+                </button>
+</div>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Filter & Tab Switcher Side (Bento Part) -->
+<div class="lg:col-span-3 space-y-6">
+<!-- Tab Switcher Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant">
+<h3 class="font-title-sm text-title-sm mb-4">Tipe Akun</h3>
+<div class="flex flex-col gap-2">
+<button class="w-full text-left px-4 py-3 rounded-lg bg-primary-container text-on-primary-container flex justify-between items-center transition-all">
+<span class="font-label-sm text-label-sm font-bold">Guru</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button class="w-full text-left px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="font-label-sm text-label-sm">Siswa</span>
+</button>
+</div>
+</div>
+<!-- Statistics Small Bento -->
+<div class="bg-primary p-6 rounded-xl text-on-primary shadow-lg flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-4xl opacity-20 self-end">groups</span>
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-wider opacity-80">Total Akun</p>
+<h4 class="text-4xl font-bold">1.240</h4>
+</div>
+</div>
+</div>
+<!-- Main Table Section (Bento Part) -->
+<div class="lg:col-span-9 bg-surface-container-lowest rounded-xl card-shadow border border-outline-variant flex flex-col">
+<!-- Search and Table Controls -->
+<div class="p-6 border-b border-outline-variant flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none text-body-md font-body-md transition-all" placeholder="Cari nama atau email..." type="text"/>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+<span class="font-label-sm text-label-sm">Filter</span>
+</button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+<span class="font-label-sm text-label-sm">Export</span>
+</button>
+</div>
+</div>
+<!-- Professional Data Grid -->
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant border-b border-outline-variant">
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider w-16">No</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider">Nama</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider">Email</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider">Kelas / Bidang</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="bg-white hover:bg-surface-container transition-colors">
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">01</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-xs">BP</div>
+<span class="font-body-md text-body-md font-semibold">Budi Pratama, M.Pd</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">budi.pratama@sekolah.sch.id</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full font-label-sm text-label-sm">Matematika</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">02</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-xs">SA</div>
+<span class="font-body-md text-body-md font-semibold">Siti Aminah, S.Pd</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">siti.aminah@sekolah.sch.id</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full font-label-sm text-label-sm">Bahasa Inggris</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="bg-white hover:bg-surface-container transition-colors">
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">03</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-xs">DR</div>
+<span class="font-body-md text-body-md font-semibold">Dr. Rusli Hamdan</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">rusli.hamdan@sekolah.sch.id</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full font-label-sm text-label-sm">Fisika</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">04</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-xs">AL</div>
+<span class="font-body-md text-body-md font-semibold">Ani Larasati, S.Si</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">ani.larasati@sekolah.sch.id</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full font-label-sm text-label-sm">Biologi</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination -->
+<div class="p-6 border-t border-outline-variant flex items-center justify-between">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Menampilkan 4 dari 42 guru</p>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded-lg disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-sm text-label-sm font-bold">1</button>
+<button class="px-4 py-2 border border-outline-variant rounded-lg font-label-sm text-label-sm hover:bg-surface-container-low transition-all">2</button>
+<button class="px-4 py-2 border border-outline-variant rounded-lg font-label-sm text-label-sm hover:bg-surface-container-low transition-all">3</button>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant md:hidden">
+<div class="flex flex-col items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm-mobile">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">class</span>
+<span class="font-label-sm text-label-sm-mobile">Kelas</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">task</span>
+<span class="font-label-sm text-label-sm-mobile">Tugas</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm-mobile">Profil</span>
+</div>
+</nav>
+<!-- Floating Action Button (Mobile Contextual) -->
+<button class="md:hidden fixed bottom-20 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]">person_add</span>
+</button>
+<script>
+        // Simple Interaction logic for Tab Switching visual
+        const tabButtons = document.querySelectorAll('.lg\\:col-span-3 button');
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabButtons.forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold');
+                    b.classList.add('text-on-surface-variant');
+                    const icon = b.querySelector('.material-symbols-outlined');
+                    if(icon) icon.remove();
+                });
+                btn.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold');
+                btn.classList.remove('text-on-surface-variant');
+                const span = document.createElement('span');
+                span.className = 'material-symbols-outlined text-[18px]';
+                span.style.fontVariationSettings = "'FILL' 1";
+                span.textContent = 'check_circle';
+                btn.appendChild(span);
+            });
+        });
+    </script>
+</body></html>

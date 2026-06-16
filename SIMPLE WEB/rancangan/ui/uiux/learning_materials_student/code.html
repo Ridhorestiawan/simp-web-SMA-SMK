@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Akses Materi - LMS SMA/SMK</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c3c7cc",
+                        "secondary-fixed": "#e3e2e6",
+                        "inverse-surface": "#2e3134",
+                        "inverse-on-surface": "#eff1f5",
+                        "primary": "#005bbf",
+                        "surface-container-highest": "#e1e2e6",
+                        "primary-container": "#1a73e8",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#e3e2e6",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#181c20",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8f9fd",
+                        "on-tertiary-fixed-variant": "#43474c",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#ffffff",
+                        "surface": "#f8f9fd",
+                        "surface-dim": "#d9dade",
+                        "background": "#f8f9fd",
+                        "inverse-primary": "#adc7ff",
+                        "on-secondary-fixed": "#1a1b1e",
+                        "primary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#001a41",
+                        "on-secondary-fixed-variant": "#46474a",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-high": "#e7e8ec",
+                        "surface-container-low": "#f2f3f7",
+                        "on-secondary-container": "#646468",
+                        "secondary": "#5e5e62",
+                        "surface-tint": "#005bc0",
+                        "surface-container": "#edeef2",
+                        "tertiary-container": "#73777c",
+                        "primary-fixed-dim": "#adc7ff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e1e2e6",
+                        "on-surface": "#191c1f",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#414754",
+                        "outline-variant": "#c1c6d6",
+                        "secondary-fixed-dim": "#c7c6ca",
+                        "outline": "#727785",
+                        "tertiary-fixed": "#dfe3e8",
+                        "on-background": "#191c1f",
+                        "tertiary": "#5a5e63"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "container-max-width": "1440px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "code-snippet": ["jetbrainsMono"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "title-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "code-snippet": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .card-shadow:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-inverse-primary hover:bg-surface-container-high p-2 rounded-full transition-colors md:hidden">menu</button>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">LMS SMA/SMK</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 items-center mr-8">
+<a class="text-on-surface-variant dark:text-surface-variant font-semibold hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary dark:text-inverse-primary font-semibold border-b-2 border-primary pb-1" href="#">Materi</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-semibold hover:text-primary transition-colors" href="#">Tugas</a>
+</div>
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover border-2 border-outline-variant" data-alt="A professional, high-quality headshot of a student for a modern learning management system profile. The lighting is soft and studio-quality, emphasizing a clean and academic aesthetic. The background is a minimalist, neutral-toned educational setting. The overall mood is focused, trustworthy, and systematic, aligned with the corporate blue and white UI palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXkwIYd8EMNWHfpWK_erLwfQ-7h_8dy-ebAjdlyWUnbl1p5DEFs_63LWIi0Y69MJUavWMg6Ij_ohbhSlQ1ZXt27Dhp6z6cUux64A_Jyn74i3Ie4vzPruSEm8u-sAsA69QHPqjTMtboUX2-rotpvemTo7bsDqg1KRhSD1bw2AZ9pGXqq0cFvTQh_rRQ7Y3G1hZi2aQ5U8zhrf8DpsRN68cm8x_5ADEhVj7S2RNjKKNaAIU_dYQuhmjcS8C9gQ8W-tVitrxjyJtDvg"/>
+</div>
+</header>
+<div class="flex pt-16 min-h-screen">
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed inset-y-0 left-0 z-40 w-64 pt-16 bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline">
+<div class="p-6 flex flex-col gap-2 border-b border-outline-variant">
+<span class="font-title-sm text-title-sm text-on-surface">Rizky Ramadhan</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Administrator</span>
+<span class="font-label-sm text-label-sm text-primary">SMA Negeri 1</span>
+</div>
+<nav class="mt-4 flex-1 overflow-y-auto">
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md">Kelola Kelas</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 bg-primary-container text-on-primary-container border-l-4 border-primary transition-all" href="#">
+<span class="material-symbols-outlined">book</span>
+<span class="font-body-md text-body-md">Materi</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body-md text-body-md">Tugas</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-body-md text-body-md">Presensi</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md text-body-md">Laporan</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop bg-background pb-24 md:pb-8">
+<!-- Header Section -->
+<div class="mb-8">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Akses Materi Pembelajaran</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Pusat sumber daya belajar digital untuk menunjang kegiatan akademik anda.</p>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant mb-8 flex flex-col md:flex-row gap-4 items-end card-shadow">
+<div class="w-full md:w-1/3">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Cari Materi</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Judul materi atau kata kunci..." type="text"/>
+</div>
+</div>
+<div class="w-full md:w-1/4">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Mata Pelajaran</label>
+<select class="w-full px-4 py-2 bg-surface rounded-lg border border-outline focus:border-primary outline-none transition-all cursor-pointer">
+<option>Semua Pelajaran</option>
+<option>Matematika</option>
+<option>Bahasa Indonesia</option>
+<option>Bahasa Inggris</option>
+<option>Fisika</option>
+<option>Biologi</option>
+</select>
+</div>
+<div class="w-full md:w-1/4">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Kelas</label>
+<select class="w-full px-4 py-2 bg-surface rounded-lg border border-outline focus:border-primary outline-none transition-all cursor-pointer">
+<option>Semua Kelas</option>
+<option>X MIPA 1</option>
+<option>XI MIPA 2</option>
+<option>XII IPS 1</option>
+</select>
+</div>
+<button class="w-full md:w-auto px-8 py-2 bg-primary text-on-primary font-title-sm text-title-sm rounded-lg hover:brightness-110 active:scale-95 transition-all">Filter</button>
+</div>
+<!-- Materials Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1: PDF -->
+<div class="group bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden card-shadow transition-all flex flex-col">
+<div class="h-32 bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-5xl">picture_as_pdf</span>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-full">PDF</span>
+<span class="font-label-sm text-label-sm text-outline">12.4 MB</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface mb-2 line-clamp-2">Kalkulus Dasar: Turunan dan Integral Fungsi Aljabar</h3>
+<div class="mt-auto space-y-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-base">school</span>
+<span class="font-body-md text-body-md">Matematika</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-base">person</span>
+<span class="font-body-md text-body-md">Drs. Bambang S.</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant pb-4">
+<span class="material-symbols-outlined text-base">calendar_today</span>
+<span class="font-body-md text-body-md">12 Okt 2023</span>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-2 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">download</span>
+                                Unduh
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 2: PPT -->
+<div class="group bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden card-shadow transition-all flex flex-col">
+<div class="h-32 bg-error/10 flex items-center justify-center group-hover:bg-error/20 transition-colors">
+<span class="material-symbols-outlined text-error text-5xl">present_to_all</span>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container font-label-sm text-label-sm rounded-full">PPT</span>
+<span class="font-label-sm text-label-sm text-outline">4.8 MB</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface mb-2 line-clamp-2">Struktur Atom dan Tabel Periodik Unsur Modern</h3>
+<div class="mt-auto space-y-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-base">school</span>
+<span class="font-body-md text-body-md">Kimia</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-base">person</span>
+<span class="font-body-md text-body-md">Ibu Sri Wahyuni</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant pb-4">
+<span class="material-symbols-outlined text-base">calendar_today</span>
+<span class="font-body-md text-body-md">10 Okt 2023</span>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-2 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">download</span>
+                                Unduh
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 3: PDF -->
+<div class="group bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden card-shadow transition-all flex flex-col">
+<div class="h-32 bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-5xl">picture_as_pdf</span>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-full">PDF</span>
+<span class="font-label-sm text-label-sm text-outline">8.2 MB</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface mb-2 line-clamp-2">Analisis Teks Prosedur Kompleks dalam Kehidupan Sehari-hari</h3>
+<div class="mt-auto space-y-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-base">school</span>
+<span class="font-body-md text-body-md">Bahasa Indonesia</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-base">person</span>
+<span class="font-body-md text-body-md">Bp. Jajang R.</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant pb-4">
+<span class="material-symbols-outlined text-base">calendar_today</span>
+<span class="font-body-md text-body-md">08 Okt 2023</span>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-2 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">download</span>
+                                Unduh
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 4: VIDEO/LINK -->
+<div class="group bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden card-shadow transition-all flex flex-col">
+<div class="h-32 bg-tertiary/10 flex items-center justify-center group-hover:bg-tertiary/20 transition-colors">
+<span class="material-symbols-outlined text-tertiary text-5xl">movie</span>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm rounded-full">VIDEO</span>
+<span class="font-label-sm text-label-sm text-outline">URL</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface mb-2 line-clamp-2">Hukum Newton II: Percobaan Menggunakan Air Track</h3>
+<div class="mt-auto space-y-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-base">school</span>
+<span class="font-body-md text-body-md">Fisika</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-base">person</span>
+<span class="font-body-md text-body-md">Dr. Handoko</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant pb-4">
+<span class="material-symbols-outlined text-base">calendar_today</span>
+<span class="font-body-md text-body-md">05 Okt 2023</span>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-2 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">play_circle</span>
+                                Tonton
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State / Pagination Placeholder -->
+<div class="mt-12 flex justify-center items-center gap-4">
+<button class="p-2 border border-outline rounded-lg text-outline hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-title-sm">1</button>
+<button class="px-4 py-2 border border-outline rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">2</button>
+<button class="px-4 py-2 border border-outline rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">3</button>
+<button class="p-2 border border-outline rounded-lg text-outline hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline md:hidden shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant" href="#">
+<span class="material-symbols-outlined">class</span>
+<span class="font-label-sm text-label-sm">Kelas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">book</span>
+<span class="font-label-sm text-label-sm">Materi</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profil</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.add('scale-95');
+                setTimeout(() => btn.classList.remove('scale-95'), 150);
+            });
+        });
+
+        // Search Input atmospheric effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

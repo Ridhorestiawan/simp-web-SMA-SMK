@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - LMS SMA/SMK</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#c3c7cc",
+                    "secondary-fixed": "#e3e2e6",
+                    "inverse-surface": "#2e3134",
+                    "inverse-on-surface": "#eff1f5",
+                    "primary": "#005bbf",
+                    "surface-container-highest": "#e1e2e6",
+                    "primary-container": "#1a73e8",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#e3e2e6",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#181c20",
+                    "on-primary-fixed-variant": "#004493",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8f9fd",
+                    "on-tertiary-fixed-variant": "#43474c",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#ffffff",
+                    "surface": "#f8f9fd",
+                    "surface-dim": "#d9dade",
+                    "background": "#f8f9fd",
+                    "inverse-primary": "#adc7ff",
+                    "on-secondary-fixed": "#1a1b1e",
+                    "primary-fixed": "#d8e2ff",
+                    "on-primary-fixed": "#001a41",
+                    "on-secondary-fixed-variant": "#46474a",
+                    "on-primary-container": "#ffffff",
+                    "surface-container-high": "#e7e8ec",
+                    "surface-container-low": "#f2f3f7",
+                    "on-secondary-container": "#646468",
+                    "secondary": "#5e5e62",
+                    "surface-tint": "#005bc0",
+                    "surface-container": "#edeef2",
+                    "tertiary-container": "#73777c",
+                    "primary-fixed-dim": "#adc7ff",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e1e2e6",
+                    "on-surface": "#191c1f",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#414754",
+                    "outline-variant": "#c1c6d6",
+                    "secondary-fixed-dim": "#c7c6ca",
+                    "outline": "#727785",
+                    "tertiary-fixed": "#dfe3e8",
+                    "on-background": "#191c1f",
+                    "tertiary": "#5a5e63"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "container-max-width": "1440px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "code-snippet": ["jetbrainsMono"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "code-snippet": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .custom-shadow {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .split-bg {
+        background: linear-gradient(to bottom, #d8e2ff 50%, #f8f9fd 50%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<!-- Top Navigation Bar (Simplified for Login) -->
+<header class="fixed top-0 w-full z-50 flex justify-center items-center h-16 bg-transparent">
+<!-- Logo Placeholder can go here if needed as a floating element -->
+</header>
+<main class="min-h-screen split-bg flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop py-12">
+<!-- Login Card Container -->
+<div class="w-full max-w-[440px] bg-surface-container-lowest rounded-xl custom-shadow overflow-hidden p-8 md:p-10 flex flex-col items-center animate-in fade-in zoom-in duration-500">
+<!-- Logo Section -->
+<div class="mb-6 flex flex-col items-center">
+<div class="w-16 h-16 bg-primary-container rounded-xl flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-primary-container text-4xl" data-icon="school">school</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary text-center leading-tight">
+                    LMS SMA/SMK
+                </h1>
+<p class="font-label-sm text-label-sm text-outline mt-2 tracking-wide uppercase">
+                    Sistem Informasi Manajemen Pembelajaran
+                </p>
+</div>
+<!-- Form Section -->
+<form class="w-full space-y-6" onsubmit="event.preventDefault(); window.location.reload();">
+<!-- Email Field -->
+<div class="space-y-1.5">
+<label class="block font-label-sm text-label-sm text-on-surface-variant" for="email">
+                        Email Institusi
+                    </label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="mail">mail</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-body-md" id="email" name="email" placeholder="nama@sekolah.sch.id" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1.5">
+<label class="block font-label-sm text-label-sm text-on-surface-variant" for="password">
+                        Kata Sandi
+                    </label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="lock">lock</span>
+<input class="w-full pl-10 pr-12 py-3 bg-surface border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-body-md" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button aria-label="Tampilkan kata sandi" class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors p-1" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="visibility" id="pw-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Additional Options -->
+<div class="flex items-center justify-between py-1">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary transition-all cursor-pointer" type="checkbox"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-primary">Ingat Saya</span>
+</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline font-semibold" href="#">Lupa Kata Sandi?</a>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary text-on-primary font-title-sm text-title-sm py-4 rounded-xl hover:bg-primary-container active:scale-[0.98] transition-all duration-150 shadow-sm flex items-center justify-center gap-2" type="submit">
+                    Masuk
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<!-- Footer Policy -->
+<div class="mt-8 pt-6 border-t border-outline-variant w-full text-center">
+<p class="font-label-sm text-label-sm text-outline">
+                    © 2024 Manajemen Sekolah Terpadu. <br class="md:hidden"/> Hak Cipta Dilindungi.
+                </p>
+</div>
+</div>
+<!-- Decorative Illustration Placeholder -->
+<div class="mt-12 opacity-50 hidden md:block">
+<img alt="Institutional Building" class="w-full max-w-[600px] h-32 object-cover rounded-2xl grayscale" data-alt="A wide angle, minimalist architectural photograph of a modern high school campus during a bright clear day. The building features clean lines, large glass windows, and a professional institutional atmosphere. The color palette is dominated by soft whites, subtle blues, and grays, maintaining a high-key light mode aesthetic. The mood is systematic, trustworthy, and peaceful, symbolizing a high-quality educational environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNCX4CUiiDKxBTGcJBeVjraHO-MYPAddthy8BleUU6IdbVDQMe9PpMKDFEOkNbpe36eAJqVVsvdA9d4o9pStHWsWGCJsbzHR5Gthxtmu7kNaJ1UYfIRaZ7jQmBcMJXSOeLGvUh5xMDbyqwaqz4lu8IiJoVa9a5S-0amkh7xaq9AU1gt7jRCLn05xKWbhvm-Z2sUiGejI3NguE5LxOkUbPWf9OEGOsWPA0-s0fb_Z-fwL39C_KZq5c1Dez75jfw2M-fHnnr6AomeA"/>
+</div>
+</main>
+<script>
+        function togglePassword() {
+            const pwInput = document.getElementById('password');
+            const pwIcon = document.getElementById('pw-icon');
+            
+            if (pwInput.type === 'password') {
+                pwInput.type = 'text';
+                pwIcon.textContent = 'visibility_off';
+            } else {
+                pwInput.type = 'password';
+                pwIcon.textContent = 'visibility';
+            }
+        }
+
+        // Add subtle focus ring effect to the card on interaction
+        const formInputs = document.querySelectorAll('input');
+        const loginCard = document.querySelector('.custom-shadow');
+        
+        formInputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                loginCard.style.boxShadow = '0 10px 25px -5px rgba(0, 91, 191, 0.1), 0 8px 10px -6px rgba(0, 91, 191, 0.1)';
+            });
+            input.addEventListener('blur', () => {
+                loginCard.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+            });
+        });
+    </script>
+</body></html>
